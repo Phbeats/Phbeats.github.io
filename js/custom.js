@@ -1,0 +1,1 @@
+function customFixNav(){let e=document.querySelectorAll(".menus_item a.site-page"),t=e[1],c=e[5],i=e[9];t.classList.add("group","hide"),c.classList.add("group","hide"),i.classList.add("group","hide")}customFixNav(),document.querySelector("#toggle-menu").onclick=function(){customFixNav()};
