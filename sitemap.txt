@@ -3,8 +3,9 @@ https://blog.phbeats.cn/link/index.html
 https://blog.phbeats.cn/tags/index.html
 https://blog.phbeats.cn/talk/index.html
 https://blog.phbeats.cn/posts/a9fe598e654c/
-https://blog.phbeats.cn/posts/83c5c24c0dc3/
+https://blog.phbeats.cn/posts/429b5e44876c/
 https://blog.phbeats.cn/posts/0cb988991ca8/
+https://blog.phbeats.cn/posts/15cc1348375f/
 https://blog.phbeats.cn/about/index.html
 https://blog.phbeats.cn/categories/index.html
 https://blog.phbeats.cn/comments/index.html
@@ -13,5 +14,8 @@ https://blog.phbeats.cn/posts/b52ef19cbecf/
 https://blog.phbeats.cn/
 https://blog.phbeats.cn/tags/%E5%8A%A0%E5%AF%86%E7%9A%84%E6%96%87%E7%AB%A0/
 https://blog.phbeats.cn/tags/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/
+https://blog.phbeats.cn/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/
+https://blog.phbeats.cn/tags/LeetCode/
 https://blog.phbeats.cn/categories/%E7%A7%81%E5%AF%86/
 https://blog.phbeats.cn/categories/%E6%B5%8B%E8%AF%95/
+https://blog.phbeats.cn/categories/%E7%AE%97%E6%B3%95/
