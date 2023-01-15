@@ -38,42 +38,6 @@
   </url>
   
   <url>
-    <loc>https://blog.phbeats.cn/posts/a9fe598e654c/</loc>
-    
-    <lastmod>2023-01-15</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.phbeats.cn/posts/5c192f3ab23b/</loc>
-    
-    <lastmod>2023-01-15</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.phbeats.cn/posts/0cb988991ca8/</loc>
-    
-    <lastmod>2023-01-15</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.phbeats.cn/posts/15cc1348375f/</loc>
-    
-    <lastmod>2023-01-15</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.phbeats.cn/about/index.html</loc>
     
     <lastmod>2023-01-15</lastmod>
@@ -102,6 +66,42 @@
   
   <url>
     <loc>https://blog.phbeats.cn/friends/index.html</loc>
+    
+    <lastmod>2023-01-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.phbeats.cn/posts/a9fe598e654c/</loc>
+    
+    <lastmod>2023-01-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.phbeats.cn/posts/e3a12039f889/</loc>
+    
+    <lastmod>2023-01-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.phbeats.cn/posts/0cb988991ca8/</loc>
+    
+    <lastmod>2023-01-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.phbeats.cn/posts/15cc1348375f/</loc>
     
     <lastmod>2023-01-15</lastmod>
     
