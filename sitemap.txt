@@ -1,10 +1,9 @@
-https://blog.phbeats.cn/friends/index.html
 https://blog.phbeats.cn/json/owo.json
 https://blog.phbeats.cn/link/index.html
 https://blog.phbeats.cn/tags/index.html
 https://blog.phbeats.cn/talk/index.html
 https://blog.phbeats.cn/posts/a9fe598e654c/
-https://blog.phbeats.cn/posts/7f3850125951/
+https://blog.phbeats.cn/posts/ae0a40dc1ca9/
 https://blog.phbeats.cn/posts/6df1062bf1dd/
 https://blog.phbeats.cn/posts/0cb988991ca8/
 https://blog.phbeats.cn/posts/122fd3617f53/
@@ -13,6 +12,7 @@ https://blog.phbeats.cn/posts/1893f995f535/
 https://blog.phbeats.cn/about/index.html
 https://blog.phbeats.cn/categories/index.html
 https://blog.phbeats.cn/comments/index.html
+https://blog.phbeats.cn/friends/index.html
 https://blog.phbeats.cn/
 https://blog.phbeats.cn/tags/%E5%8A%A0%E5%AF%86%E7%9A%84%E6%96%87%E7%AB%A0/
 https://blog.phbeats.cn/tags/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/
