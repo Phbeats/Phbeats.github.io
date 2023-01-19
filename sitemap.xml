@@ -2,15 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.phbeats.cn/friends/index.html</loc>
-    
-    <lastmod>2023-01-19</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.phbeats.cn/json/owo.json</loc>
     
     <lastmod>2023-01-19</lastmod>
@@ -56,7 +47,7 @@
   </url>
   
   <url>
-    <loc>https://blog.phbeats.cn/posts/72a55f5b5682/</loc>
+    <loc>https://blog.phbeats.cn/posts/ea8e3e3b6c34/</loc>
     
     <lastmod>2023-01-19</lastmod>
     
@@ -120,6 +111,15 @@
   
   <url>
     <loc>https://blog.phbeats.cn/comments/index.html</loc>
+    
+    <lastmod>2023-01-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.phbeats.cn/friends/index.html</loc>
     
     <lastmod>2023-01-19</lastmod>
     
