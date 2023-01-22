@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>冒泡排序</title>
+      <link href="/posts/085c695cb1f5/"/>
+      <url>/posts/085c695cb1f5/</url>
+      
+        <content type="html"><![CDATA[<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><h3 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h3><p>从后往前（或从前往后），两两比较相邻元素的值，若为逆序（q[i - 1] &gt; q[i]），则交换它们，直到序列比较完。</p><p>一个简单的例子：</p><p><img src="https://bu.dusays.com/2023/01/22/63ccdf3d64573.png" alt="image-20230122144353880"></p><h3 id="算法特性"><a href="#算法特性" class="headerlink" title="算法特性"></a>算法特性</h3><p>时间复杂度：O(n<sup>2</sup>)</p><p>空间复杂度：O(1)</p><p>稳定性：稳定</p><h3 id="算法模板"><a href="#算法模板" class="headerlink" title="算法模板"></a>算法模板</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">bubble_sort</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-comment">// n个元素，比 n - 1 趟</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span> ; i &lt; n - <span class="hljs-number">1</span> ; i++)&#123;<br>        <span class="hljs-comment">// 优化，这样可以当元素有序时，一趟就退出</span><br>        <span class="hljs-comment">// 有没有交换过</span><br>        <span class="hljs-type">bool</span> has_swap = <span class="hljs-literal">false</span>;<br>        <span class="hljs-comment">// 从后往前枚举，由于比较的是相邻元素，j到 i + 1 就行</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = n - <span class="hljs-number">1</span> ; j &gt; i ; j--)&#123;<br>            <span class="hljs-comment">// 逆序</span><br>            <span class="hljs-keyword">if</span>(q[j - <span class="hljs-number">1</span>] &gt; q[j])&#123;<br>                <span class="hljs-built_in">swap</span>(q[j - <span class="hljs-number">1</span>], q[j]);<br>                has_swap = <span class="hljs-literal">true</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">// 如果没有交换过，代表整个序列在第一趟检测出有序，直接退出排序</span><br>        <span class="hljs-keyword">if</span>(!has_swap) <span class="hljs-keyword">break</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><h3 id="技术支持"><a href="#技术支持" class="headerlink" title="技术支持"></a>技术支持</h3><p><a href="https://www.acwing.com/activity/content/code/content/4550243/">我</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 排序算法 </tag>
+            
+            <tag> 算法模板 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>2022年度总结</title>
       <link href="/posts/bf74f35b9f99/"/>
       <url>/posts/bf74f35b9f99/</url>
