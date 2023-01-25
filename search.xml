@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>快速排序</title>
+      <link href="/posts/15ae1352a338/"/>
+      <url>/posts/15ae1352a338/</url>
+      
+        <content type="html"><![CDATA[<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><div class="note success simple"><p>本文将介绍王道书上的快排模板和一种不同于老教材的快排模板，图示是根据考研书上画的</p></div><h3 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h3><p>快速排序的核心操作为「哨兵划分」，其目标为：<wavy>选取数组某个元素为基准数，将所有小于基准数的元素移动至其左边，大于基准数的元素移动至其右边</wavy>。「哨兵划分」执行完毕后，原数组被划分成两个部分，即 <wavy>左子数组</wavy> 和 <wavy>右子数组</wavy>，且满足 <wavy>左子数组任意元素 ＜ 基准数 ＜ 右子数组任意元素</wavy>。因此，接下来我们只需要排序两个子数组即可，再将两个子数组执行「哨兵划分」……；直至子数组长度为1时<wavy>终止递归</wavy>。</p><p>一个简单的例子：</p><p><img src="https://bu.dusays.com/2023/01/24/63cf7ee962723.png" alt="image-20230124144637959"></p><p>以上是快速排序第一轮的模拟。</p><h3 id="算法特性"><a href="#算法特性" class="headerlink" title="算法特性"></a>算法特性</h3><p><wavy>时间复杂度</wavy>：</p><ul><li>快速排序的<wavy>平均情况下的运行时间与其最佳情况下的运行时间很接近都是O(nlogn)</wavy></li><li>快速排序的运行时间与划分是否对称有关，<wavy>快速排序的最坏情况发生在两个区域分别包含 n - 1 个元素和 0 个元素时</wavy>，这种最大限度的不对称若发生在每层递归上，本应是二叉树的递归树退化成一叉树（单链表），<wavy>即对应于初始排序表基本有序或基本逆序时，就得到最坏情况下的时间复杂度O(<sup>2</sup>)</wavy>。</li></ul><wavy>空间复杂度</wavy>：由于快速排序是递归的，<wavy>需要借助一个递归工作栈</wavy><ul><li>最好情况：O(logn) （二叉树）</li><li>平均情况：O(logn) （二叉树）</li><li>最坏情况：由于要进行 n - 1 次递归调用，所以栈的深度为O(n)</li></ul><wavy>稳定性</wavy>：不稳定<br><br><div class="tip "><p>在快速排序算法中，每趟排序后会将枢轴（基准）元素放到其最终位置上。（考研写法） </p></div><h3 id="快速排序为什么快？"><a href="#快速排序为什么快？" class="headerlink" title="快速排序为什么快？"></a>快速排序为什么快？</h3><p>从命名能够看出，快速排序在效率方面一定“有两把刷子”。快速排序的平均时间复杂度虽然与「归并排序」和「堆排序」一致，但实际 <strong>效率更高</strong>，这是因为：</p><ul><li><strong>出现最差情况的概率很低</strong>：虽然快速排序的最差时间复杂度为 O(n<sup>2</sup>) ，不如归并排序，但绝大部分情况下，快速排序可以达到 O(nlogn) 的复杂度。</li><li><strong>缓存使用效率高</strong>：哨兵划分操作时，将整个子数组加载入缓存中，访问元素效率很高。而诸如「堆排序」需要跳跃式访问元素，因此不具有此特性。</li><li><strong>复杂度的常数系数低</strong>：在提及的三种算法中，快速排序的 <strong>比较</strong>、<strong>赋值</strong>、<strong>交换</strong> 三种操作的总体数量最少（类似于「插入排序」快于「冒泡排序」的原因）。</li></ul><h3 id="算法模板1（背诵适合面试）"><a href="#算法模板1（背诵适合面试）" class="headerlink" title="算法模板1（背诵适合面试）"></a>算法模板1（背诵适合面试）</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">quick_sort</span><span class="hljs-params">(<span class="hljs-type">int</span> l , <span class="hljs-type">int</span> r)</span></span>&#123;<br>    <span class="hljs-comment">// 区间大小为1，跳出循环</span><br>    <span class="hljs-keyword">if</span>(l &gt;= r) <span class="hljs-keyword">return</span>;<br>    <span class="hljs-comment">// 一开始 左边是 -1 右边是 length, mid不取第一个元素是避免出现极端情况退化成单链表</span><br>    <span class="hljs-type">int</span> i = l - <span class="hljs-number">1</span> , j = r + <span class="hljs-number">1</span> , mid = q[(l + r) &gt;&gt; <span class="hljs-number">1</span>];<br>    <span class="hljs-keyword">while</span>(i &lt; j)&#123;<br>        <span class="hljs-keyword">do</span> j--; <span class="hljs-keyword">while</span>(q[j] &gt; pivot);<br>        <span class="hljs-keyword">do</span> i++; <span class="hljs-keyword">while</span>(q[i] &lt; pivot);<br>        <span class="hljs-keyword">if</span>(i &lt; j) <span class="hljs-built_in">swap</span>(q[i],q[j]);<br>    &#125;<br>    <span class="hljs-built_in">quick_sort</span>(l,j);<br>    <span class="hljs-built_in">quick_sort</span>(j+<span class="hljs-number">1</span>,r);<br>&#125;<br></code></pre></td></tr></table></figure><h3 id="算法模板2（考研版本）"><a href="#算法模板2（考研版本）" class="headerlink" title="算法模板2（考研版本）"></a>算法模板2（考研版本）</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">partition</span><span class="hljs-params">(<span class="hljs-type">int</span> i, <span class="hljs-type">int</span> j)</span></span>&#123;<br>    <span class="hljs-type">int</span> pivot = q[i];<br>    <span class="hljs-keyword">while</span>(i &lt; j)&#123;<br>        <span class="hljs-keyword">while</span>(i &lt; j &amp;&amp; q[j] &gt;= pivot) --j;<br>        q[i] = q[j];<br>        <span class="hljs-keyword">while</span>(i &lt; j &amp;&amp; q[i] &lt;= pivot) ++i;<br>        q[j] = q[i];<br>    &#125;<br>    q[i] = pivot;<br>    <span class="hljs-keyword">return</span> i;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">quick_sort</span><span class="hljs-params">(<span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r)</span></span>&#123;<br>    <span class="hljs-keyword">if</span>(l &lt; r)&#123;<br>        <span class="hljs-type">int</span> pivot_pos = <span class="hljs-built_in">partition</span>(l,r);<br>        <span class="hljs-built_in">quick_sort</span>(l, pivot_pos - <span class="hljs-number">1</span>);<br>        <span class="hljs-built_in">quick_sort</span>(pivot_pos + <span class="hljs-number">1</span>, r);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><p>以上两种模板，各有缺点：</p><ul><li><wavy>第一种模板的pivot最终不一定是在分界点上，而教材上的pivot最终一定是在分界点上的</wavy>    </li><li><wavy>第二种模板的分界点取每个区间的第一个元素作为pivot，若被卡数据，比如：顺序或逆序，让二叉树退化成一叉链表。这样就会TLE(Time Limit Exceeded)</wavy></li></ul><p>第一种适合算法模板（短），第二种适合考研写法。</p><h3 id="技术支持"><a href="#技术支持" class="headerlink" title="技术支持"></a>技术支持</h3><p><a href="https://www.hello-algo.com/chapter_sorting/quick_sort/">hello-algo</a></p><p><a href="https://www.acwing.com/activity/content/code/content/4550243/">我</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 排序算法 </tag>
+            
+            <tag> 算法模板 </tag>
+            
+            <tag> AcWing </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>希尔排序</title>
       <link href="/posts/0f47dab8531e/"/>
       <url>/posts/0f47dab8531e/</url>
@@ -155,9 +184,9 @@
             
             <tag> 算法模板 </tag>
             
-            <tag> 查找算法 </tag>
-            
             <tag> AcWing </tag>
+            
+            <tag> 查找算法 </tag>
             
         </tags>
       
