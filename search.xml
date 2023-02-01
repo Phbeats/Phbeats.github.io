@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>堆排序</title>
+      <link href="/posts/9ec0dc442f72/"/>
+      <url>/posts/9ec0dc442f72/</url>
+      
+        <content type="html"><![CDATA[<h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><div class="note success simple"><p>本文将介绍数据结构堆，以及堆排序</p></div><h3 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h3><p>堆是一种<wavy>完全二叉树</wavy>，分为<wavy>小根堆</wavy>和<wavy>大根堆</wavy>；以大根堆为例：根≥儿子。<br>通常堆是通过<strong>一维数组</strong>来实现的。</p><p><wavy>堆的存储方式</wavy>：顺序存储（因为要支持随机索引）</p><p><emp>在数组起始下标为0的情况下</emp>：</p><p>如果根节点的编号是 x 的话，它的左儿子编号是 2x + 1，右儿子编号是 2x + 2。</p><p>一个子节点是 p 的话，它的父节点是 ⌊ (p - 1) / 2 ⌋。</p><p><emp>在数组起始下标为1的情况下</emp>：</p><p>如果根节点的编号是 x 的话，它的左儿子编号是 2x，右儿子编号是 2x + 1。</p><p>一个子节点是 p 的话，它的父节点是 ⌊ p / 2 ⌋。</p><div class="tip blue"><p>在数组起始下标为1的情况下</p></div><p><wavy>大根堆的创建</wavy>：</p><p><img src="https://bu.dusays.com/2023/02/01/63da191470816.png" alt="image-20230201135015855"></p><p><img src="https://bu.dusays.com/2023/02/01/63da1cc17a06d.png" alt="image-20230201160315416"></p><p><wavy>大根堆的删除（堆顶）</wavy>：</p><p>将堆的最后一个元素覆盖堆顶元素，堆的大小减1。（最后一个元素很好删）</p><p>然后，从堆顶开始 down 一遍。</p><h3 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h3><p>使用大根堆，基于大根堆的操作基础；堆顶元素总是最大值，每次将堆顶元素与堆中最后一个元素互换，将堆的大小减1，然后 <code>down(1)</code>维护大根堆。反复如此，直到 n 个元素，执行 n - 1 次这样的操作，排序完成。</p><h3 id="算法特性"><a href="#算法特性" class="headerlink" title="算法特性"></a>算法特性</h3><p><wavy>时间复杂度</wavy>：初始化建堆时间是O(n)，更改堆元素后重建堆时间是O(nlogn)，但一般认为全部情况都是O(nlogn)</p><p><wavy>空间复杂度</wavy>：O(logn)</p><p><wavy>稳定性</wavy>：不稳定</p><h3 id="算法模板"><a href="#算法模板" class="headerlink" title="算法模板"></a>算法模板</h3><p>需要注意的是，需要维护一个变量 <code>sz</code>，它代表堆的容量</p><p><emp>在数组起始下标为1的情况下</emp>：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// 维护以 u 为根的堆</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">down</span><span class="hljs-params">(<span class="hljs-type">int</span> u)</span></span>&#123;<br>    <span class="hljs-type">int</span> t = u;<br>    <span class="hljs-keyword">if</span>(u * <span class="hljs-number">2</span> &lt;= sz &amp;&amp; q[u * <span class="hljs-number">2</span>] &gt; q[t]) t = u * <span class="hljs-number">2</span>;<br>    <span class="hljs-keyword">if</span>(u * <span class="hljs-number">2</span> + <span class="hljs-number">1</span> &lt;= sz &amp;&amp; q[u * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>] &gt; q[t]) t = u * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>;<br>    <span class="hljs-comment">// 如果 t 和 u 不相等，说明有 儿子比父亲大，应该进行交换，然后进行维护之前儿子在的位置</span><br>    <span class="hljs-keyword">if</span>(u != t)&#123;<br>        <span class="hljs-built_in">swap</span>(q[t],q[u]);<br>        <span class="hljs-comment">// 如果是上层发生改变，可能会牵涉到下层，因此需要递归down下去</span><br>        <span class="hljs-built_in">down</span>(t);<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">heap_sort</span><span class="hljs-params">()</span></span>&#123;<br>    sz = n;<br>    <span class="hljs-comment">// 从有分支的结点开始down</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = n / <span class="hljs-number">2</span> ; i ; i--) <span class="hljs-built_in">down</span>(i);<br><br>    <span class="hljs-comment">// down完之后堆顶是最大的元素, 利用大根堆性质，进行n - 1次与数组最后一个元素交换可以进行排序</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span> ; i &lt; n - <span class="hljs-number">1</span> ; i++)&#123;<br>        <span class="hljs-built_in">swap</span>(q[<span class="hljs-number">1</span>],q[sz]);<br>        sz--;<br>        <span class="hljs-built_in">down</span>(<span class="hljs-number">1</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 排序算法 </tag>
+            
+            <tag> 算法模板 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>快速排序</title>
       <link href="/posts/15ae1352a338/"/>
       <url>/posts/15ae1352a338/</url>
