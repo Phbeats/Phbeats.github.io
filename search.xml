@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>[AcWing]38. 二叉树的镜像</title>
+      <link href="/posts/f218078c7891/"/>
+      <url>/posts/f218078c7891/</url>
+      
+        <content type="html"><![CDATA[<h1 id="AcWing-38-二叉树的镜像"><a href="#AcWing-38-二叉树的镜像" class="headerlink" title="[AcWing]38. 二叉树的镜像"></a><a href="https://www.acwing.com/problem/content/description/37/">[AcWing]38. 二叉树的镜像</a></h1><p>输入一个二叉树，将它变换为它的镜像。</p><h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>树中节点数量 <code>[0,100]</code>。</p><h4 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">输入树：<br>      8<br>     / \<br>    6  10<br>   / \ / \<br>  5  7 9 11<br><br> [8,6,10,5,7,9,11,null,null,null,null,null,null,null,null] <br>输出树：<br>      8<br>     / \<br>    10  6<br>   / \ / \<br>  11 9 7  5<br><br> [8,10,6,11,9,7,5,null,null,null,null,null,null,null,null]<br></code></pre></td></tr></table></figure><h3 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h3><p>仔细观察发现，镜像就是：<wavy>交换左右子树，对于子树中的左右子节点也进行交换。</wavy><br>利用这个性质，抽象一下就是：递归遍历这个树，交换其<code>左右子树</code>。</p><h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Definition for a binary tree node.</span><br><span class="hljs-comment"> * struct TreeNode &#123;</span><br><span class="hljs-comment"> *     int val;</span><br><span class="hljs-comment"> *     TreeNode *left;</span><br><span class="hljs-comment"> *     TreeNode *right;</span><br><span class="hljs-comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span><br><span class="hljs-comment"> * &#125;;</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">mirror</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        <span class="hljs-comment">// 递归到空的节点，就跳出，什么也不做</span><br>        <span class="hljs-keyword">if</span>(!root) <span class="hljs-keyword">return</span>;<br>        <span class="hljs-comment">// 交换左右子树</span><br>        <span class="hljs-built_in">mirror</span>(root -&gt; left);<br>        <span class="hljs-built_in">mirror</span>(root -&gt; right);<br>        <span class="hljs-built_in">swap</span>(root -&gt; left, root -&gt; right);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure><p>上面的代码虽然简单，但还是可以分析一下。</p><ol><li>从宏观上来看：这是个交换左右子树的过程。</li><li>从微观上来看：这是个先找到叶子结点，从下面开始交换左右节点的过程。（函数递归调用栈）</li></ol><h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>原树仅被遍历一次，所以时间复杂度是 O(n)。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> AcWing </tag>
+            
+            <tag> 二叉树 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[AcWing]37. 树的子结构</title>
       <link href="/posts/e7ce670351d7/"/>
       <url>/posts/e7ce670351d7/</url>
@@ -153,9 +180,9 @@
       
         <tags>
             
-            <tag> AcWing </tag>
-            
             <tag> 排序算法 </tag>
+            
+            <tag> AcWing </tag>
             
         </tags>
       
@@ -180,9 +207,9 @@
       
         <tags>
             
-            <tag> 算法模板 </tag>
-            
             <tag> 排序算法 </tag>
+            
+            <tag> 算法模板 </tag>
             
         </tags>
       
@@ -207,9 +234,9 @@
       
         <tags>
             
-            <tag> AcWing </tag>
-            
             <tag> 排序算法 </tag>
+            
+            <tag> AcWing </tag>
             
         </tags>
       
@@ -261,9 +288,9 @@
       
         <tags>
             
-            <tag> 算法模板 </tag>
-            
             <tag> 排序算法 </tag>
+            
+            <tag> 算法模板 </tag>
             
         </tags>
       
@@ -288,9 +315,9 @@
       
         <tags>
             
-            <tag> 算法模板 </tag>
-            
             <tag> 排序算法 </tag>
+            
+            <tag> 算法模板 </tag>
             
         </tags>
       
@@ -315,9 +342,9 @@
       
         <tags>
             
-            <tag> 算法模板 </tag>
-            
             <tag> 排序算法 </tag>
+            
+            <tag> 算法模板 </tag>
             
         </tags>
       
@@ -342,9 +369,9 @@
       
         <tags>
             
-            <tag> 算法模板 </tag>
-            
             <tag> 排序算法 </tag>
+            
+            <tag> 算法模板 </tag>
             
         </tags>
       
@@ -369,9 +396,9 @@
       
         <tags>
             
-            <tag> 算法模板 </tag>
-            
             <tag> 排序算法 </tag>
+            
+            <tag> 算法模板 </tag>
             
         </tags>
       
@@ -421,9 +448,9 @@
       
         <tags>
             
-            <tag> 算法模板 </tag>
-            
             <tag> 排序算法 </tag>
+            
+            <tag> 算法模板 </tag>
             
         </tags>
       
@@ -448,11 +475,11 @@
       
         <tags>
             
-            <tag> 查找算法 </tag>
+            <tag> AcWing </tag>
             
             <tag> 算法模板 </tag>
             
-            <tag> AcWing </tag>
+            <tag> 查找算法 </tag>
             
         </tags>
       
@@ -477,9 +504,9 @@
       
         <tags>
             
-            <tag> 算法模板 </tag>
-            
             <tag> 排序算法 </tag>
+            
+            <tag> 算法模板 </tag>
             
         </tags>
       
