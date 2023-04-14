@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>[AcWing]39. 对称的二叉树</title>
+      <link href="/posts/49a255ffe500/"/>
+      <url>/posts/49a255ffe500/</url>
+      
+        <content type="html"><![CDATA[<h1 id="AcWing-39-对称的二叉树"><a href="#AcWing-39-对称的二叉树" class="headerlink" title="[AcWing]39. 对称的二叉树"></a><a href="https://www.acwing.com/problem/content/38/">[AcWing]39. 对称的二叉树</a></h1><p>请实现一个函数，用来判断一棵二叉树是不是对称的。</p><p>如果一棵二叉树和它的镜像一样，那么它是对称的。</p><h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>树中节点数量 <code>[0,100]</code>。</p><h4 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">如下图所示二叉树[1,2,2,3,4,4,3,null,null,null,null,null,null,null,null]为对称二叉树：<br>    1<br>   / \<br>  2   2<br> / \ / \<br>3  4 4  3<br><br>如下图所示二叉树[1,2,2,null,4,4,3,null,null,null,null,null,null]不是对称二叉树：<br>    1<br>   / \<br>  2   2<br>   \ / \<br>   4 4  3<br></code></pre></td></tr></table></figure><h3 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h3><p><img src="https://bu.dusays.com/2023/04/14/6439692818a87.png" alt="image-20230414225426092"></p><h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Definition for a binary tree node.</span><br><span class="hljs-comment"> * struct TreeNode &#123;</span><br><span class="hljs-comment"> *     int val;</span><br><span class="hljs-comment"> *     TreeNode *left;</span><br><span class="hljs-comment"> *     TreeNode *right;</span><br><span class="hljs-comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span><br><span class="hljs-comment"> * &#125;;</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">dfs</span><span class="hljs-params">(TreeNode* pA, TreeNode* pB)</span></span>&#123;<br>        <span class="hljs-comment">// 如果左根节点和右根节点有一个为空，那么只有它两都为空的时候才是true，否则是false</span><br>        <span class="hljs-keyword">if</span>(!pA || !pB) <span class="hljs-keyword">return</span> !pA &amp;&amp; !pB;<br>        <span class="hljs-comment">// 左右根节点都存在的情况</span><br>        <span class="hljs-comment">// 左右节点根节点值不同，则不对称</span><br>        <span class="hljs-keyword">if</span>(pA -&gt; val != pB -&gt; val) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <span class="hljs-comment">// 左右根节点都存在，且值相同，比较他们的子树</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">dfs</span>(pA -&gt; left, pB -&gt; right) &amp;&amp; <span class="hljs-built_in">dfs</span>(pA -&gt; right, pB -&gt; left);<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isSymmetric</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        <span class="hljs-comment">// 如果根节点是空的那么一定是对称的（规定如此）</span><br>        <span class="hljs-keyword">if</span>(!root) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        <span class="hljs-comment">// 判断左右子树是不是镜像的</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">dfs</span>(root -&gt; left, root -&gt; right);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure><h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>从上到下每个节点仅被遍历一遍，所以时间复杂度是 O(n)。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> AcWing </tag>
+            
+            <tag> 二叉树 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[AcWing]38. 二叉树的镜像</title>
       <link href="/posts/f218078c7891/"/>
       <url>/posts/f218078c7891/</url>
