@@ -4,6 +4,60 @@
   
     
     <entry>
+      <title>[AcWing]88. 树中两个结点的最低公共祖先</title>
+      <link href="/posts/02073ceab06d/"/>
+      <url>/posts/02073ceab06d/</url>
+      
+        <content type="html"><![CDATA[<h1 id="AcWing-88-树中两个结点的最低公共祖先"><a href="#AcWing-88-树中两个结点的最低公共祖先" class="headerlink" title="[AcWing]88. 树中两个结点的最低公共祖先"></a><a href="https://www.acwing.com/problem/content/84/">[AcWing]88. 树中两个结点的最低公共祖先</a></h1><p>给出一个二叉树，输入两个树节点，求它们的最低公共祖先。</p><p>一个树节点的祖先节点包括它本身。</p><p><strong>注意：</strong></p><ul><li>输入的二叉树不为空；</li><li>输入的两个节点一定不为空，且是二叉树中的节点；</li></ul><!-- --><h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>树中节点数量 <code>[0,500]</code>。</p><h4 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">二叉树[8, 12, 2, null, null, 6, 4, null, null, null, null]如下图所示：<br>    8<br>   / \<br>  12  2<br>     / \<br>    6   4<br><br>1. 如果输入的树节点为2和12，则输出的最低公共祖先为树节点8。<br><br>2. 如果输入的树节点为2和6，则输出的最低公共祖先为树节点2。<br></code></pre></td></tr></table></figure><h3 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h3><p><img src="https://bu.dusays.com/2023/04/24/64468eb3c9247.png" alt="image-20230424221354590"></p><ol><li>如果<code>p</code>、<code>q</code>分别存在于这棵子树的左右两边，返回这棵子树的根，它就是最低公共祖先。</li><li>否则，<code>p</code>、<code>q</code>只可能全存在于这棵子树的左边、或者全存在于这棵子树的右边。</li><li>如果当前节点恰好是<code>p</code>或<code>q</code>中的一个，那么它就是最低公共祖先。</li></ol><h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Definition for a binary tree node.</span><br><span class="hljs-comment"> * struct TreeNode &#123;</span><br><span class="hljs-comment"> *     int val;</span><br><span class="hljs-comment"> *     TreeNode *left;</span><br><span class="hljs-comment"> *     TreeNode *right;</span><br><span class="hljs-comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span><br><span class="hljs-comment"> * &#125;;</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">TreeNode* <span class="hljs-title">lowestCommonAncestor</span><span class="hljs-params">(TreeNode* root, TreeNode* p, TreeNode* q)</span> </span>&#123;<br>        <span class="hljs-comment">// 由于题目说了，输入的树不为空，并且p、q是树中的元素</span><br>        <span class="hljs-comment">// 就是说一定能够找到树中两个节点的最低公共祖先</span><br>        <span class="hljs-comment">// 遇到叶子节点</span><br>        <span class="hljs-keyword">if</span>(!root) <span class="hljs-keyword">return</span> <span class="hljs-literal">NULL</span>;<br>        <br>        <span class="hljs-comment">// 左边找一下、右边找一下，遇到p、q节点就保存</span><br>        TreeNode * left = <span class="hljs-built_in">lowestCommonAncestor</span>(root -&gt; left, p, q);<br>        TreeNode * right = <span class="hljs-built_in">lowestCommonAncestor</span>(root -&gt; right, p, q);<br>        <br>        <span class="hljs-comment">// 如果p、q分别存在于这棵子树的左右两边，返回这棵子树的根，它就是p、q的最低公共祖先</span><br>        <span class="hljs-keyword">if</span>(left &amp;&amp; right) <span class="hljs-keyword">return</span> root;<br>        <br>        <span class="hljs-comment">// 那么p、q只可能全存在于这棵子树的左边、或者全存在于这棵子树的右边</span><br>        <span class="hljs-comment">// 如果当前节点恰好是p或q中的一个，那么它就是最低公共祖先</span><br>        <span class="hljs-keyword">if</span>(root == p || root == q) <span class="hljs-keyword">return</span> root;<br>        <br>        <span class="hljs-comment">// 如果最低公共祖先在左边，返回左边的最低公共祖先</span><br>        <span class="hljs-comment">// 如果最低公共祖先在右边，返回右边的最低公共祖先</span><br>        <span class="hljs-keyword">if</span>(left) <span class="hljs-keyword">return</span> left;<br>        <span class="hljs-keyword">return</span> right;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure><h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>遍历整棵子树，时间复杂度<code>O(n)</code>。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> AcWing </tag>
+            
+            <tag> 二叉树 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[AcWing]72. 平衡二叉树</title>
+      <link href="/posts/4c34c5a2d3db/"/>
+      <url>/posts/4c34c5a2d3db/</url>
+      
+        <content type="html"><![CDATA[<h1 id="AcWing-72-平衡二叉树"><a href="#AcWing-72-平衡二叉树" class="headerlink" title="[AcWing]72. 平衡二叉树"></a><a href="https://www.acwing.com/problem/content/68/">[AcWing]72. 平衡二叉树</a></h1><p>输入一棵二叉树的根结点，判断该树是不是平衡二叉树。</p><p>如果某二叉树中任意结点的左右子树的深度相差不超过 <code>1</code>，那么它就是一棵平衡二叉树。</p><p><strong>注意：</strong></p><ul><li>规定空树也是一棵平衡二叉树。</li></ul><!-- --><h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>树中节点数量 <code>[0,500]</code>。</p><h4 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">输入：二叉树[5,7,11,null,null,12,9,null,null,null,null]如下所示，<br>    5<br>   / \<br>  7  11<br>    /  \<br>   12   9<br><br>输出：true<br></code></pre></td></tr></table></figure><h3 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h3><p>在统计二叉树的深度的代码基础上，实时判断当前节点的左右子树的深度差是否大于1，如果是则不是平衡二叉树</p><h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Definition for a binary tree node.</span><br><span class="hljs-comment"> * struct TreeNode &#123;</span><br><span class="hljs-comment"> *     int val;</span><br><span class="hljs-comment"> *     TreeNode *left;</span><br><span class="hljs-comment"> *     TreeNode *right;</span><br><span class="hljs-comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span><br><span class="hljs-comment"> * &#125;;</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-comment">// 默认是平衡二叉树，如果判断过程中当前节点的左右子树的深度差大于1，则改为false</span><br>    <span class="hljs-type">bool</span> res = <span class="hljs-literal">true</span>;<br><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">dfs</span><span class="hljs-params">(TreeNode * root)</span></span>&#123;<br>        <span class="hljs-comment">// 空树深度为0</span><br>        <span class="hljs-comment">// DFS结束，那层空节点不算深度，返回0</span><br>        <span class="hljs-keyword">if</span>(!root) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-comment">// 如果不是空树,计算当前节点的左右子树深度</span><br>        <span class="hljs-type">int</span> left = <span class="hljs-built_in">dfs</span>(root -&gt; left);<br>        <span class="hljs-type">int</span> right = <span class="hljs-built_in">dfs</span>(root -&gt; right);<br>        <br>        <span class="hljs-comment">// 如果左右子树深度之差大于1，则不是平衡二叉树</span><br>        <span class="hljs-keyword">if</span>(<span class="hljs-built_in">abs</span>(left - right) &gt; <span class="hljs-number">1</span>) res = <span class="hljs-literal">false</span>;<br>        <span class="hljs-comment">// 返回 包括当前节点的，二叉树的深度</span><br>        <span class="hljs-comment">// + 1 是因为当前节点也算1个深度，记得从下往上看</span><br><br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">max</span>(left, right) + <span class="hljs-number">1</span>;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isBalanced</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        <span class="hljs-built_in">dfs</span>(root);<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> AcWing </tag>
+            
+            <tag> 二叉树 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[AcWing]70. 二叉搜索树的第k个结点</title>
       <link href="/posts/58544f92f8ea/"/>
       <url>/posts/58544f92f8ea/</url>
