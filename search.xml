@@ -4,6 +4,60 @@
   
     
     <entry>
+      <title>[AcWing]28. 在O(1)时间删除链表结点</title>
+      <link href="/posts/766b1c104395/"/>
+      <url>/posts/766b1c104395/</url>
+      
+        <content type="html"><![CDATA[<h1 id="AcWing-28-在O-1-时间删除链表结点"><a href="#AcWing-28-在O-1-时间删除链表结点" class="headerlink" title="[AcWing]28. 在O(1)时间删除链表结点"></a><a href="https://www.acwing.com/problem/content/85/">[AcWing]28. 在O(1)时间删除链表结点</a></h1><p>给定单向链表的一个节点指针，定义一个函数在O(1)时间删除该结点。</p><p>假设链表一定存在，并且该节点一定不是尾节点。</p><h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>链表长度 <code>[1,500]</code>。</p><h4 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">输入：链表 1-&gt;4-&gt;6-&gt;8<br>      删掉节点：第2个节点即6（头节点为第0个节点）<br><br>输出：新链表 1-&gt;4-&gt;8<br></code></pre></td></tr></table></figure><h3 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h3><p><img src="https://bu.dusays.com/2023/05/11/645cf4ee045e4.png" alt="image-20230511213718985"></p><p><img src="https://bu.dusays.com/2023/05/11/645cf4f1ea571.png" alt="image-20230511214024756"></p><p><img src="https://bu.dusays.com/2023/05/11/645cf4e63b40d.png" alt="image-20230511214110079"></p><h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Definition for singly-linked list.</span><br><span class="hljs-comment"> * struct ListNode &#123;</span><br><span class="hljs-comment"> *     int val;</span><br><span class="hljs-comment"> *     ListNode *next;</span><br><span class="hljs-comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span><br><span class="hljs-comment"> * &#125;;</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">deleteNode</span><span class="hljs-params">(ListNode* node)</span> </span>&#123;<br>        ListNode * q = node -&gt; next;<br>        ListNode * p = q -&gt; next;<br>        <br>        node -&gt; val = q -&gt; val;<br>        node -&gt; next = p;<br>        <span class="hljs-keyword">delete</span> q;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> AcWing </tag>
+            
+            <tag> 链表 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[AcWing]17. 从尾到头打印链表</title>
+      <link href="/posts/7cd2155b1ef6/"/>
+      <url>/posts/7cd2155b1ef6/</url>
+      
+        <content type="html"><![CDATA[<div class="note success simple"><p>你凭什么让别人相信你？</p></div><h1 id="AcWing-17-从尾到头打印链表"><a href="#AcWing-17-从尾到头打印链表" class="headerlink" title="[AcWing]17. 从尾到头打印链表"></a><a href="https://www.acwing.com/problem/content/18/">[AcWing]17. 从尾到头打印链表</a></h1><p>输入一个链表的头结点，按照 <strong>从尾到头</strong> 的顺序返回节点的值。</p><p>返回的结果用数组存储。</p><h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p><code>0 ≤</code> 链表长度 <code>≤ 1000</code>。</p><h4 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">输入：[2, 3, 5]<br>返回：[5, 3, 2]<br></code></pre></td></tr></table></figure><h3 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h3><p>最简单的方法就是，直接遍历链表，然后存入<code>vector</code>，再利用库函数将其反转输出。<br>所以此处只写一下，递归函数法。<br>还是利用递归栈，出栈的时候将节点值塞入<code>vector</code>，这样就是逆序的了。</p><h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Definition for singly-linked list.</span><br><span class="hljs-comment"> * struct ListNode &#123;</span><br><span class="hljs-comment"> *     int val;</span><br><span class="hljs-comment"> *     ListNode *next;</span><br><span class="hljs-comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span><br><span class="hljs-comment"> * &#125;;</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;<span class="hljs-type">int</span>&gt; res;<br>    <br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(ListNode * head)</span></span>&#123;<br>        <span class="hljs-comment">// 出口</span><br>        <span class="hljs-keyword">if</span>(!head) <span class="hljs-keyword">return</span>;<br>        <span class="hljs-comment">// 找到尾</span><br>        <span class="hljs-built_in">dfs</span>(head -&gt; next);<br>        <span class="hljs-comment">// 从尾到头放入res</span><br>        res.<span class="hljs-built_in">push_back</span>(head -&gt; val);<br>    &#125;<br><br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">printListReversingly</span><span class="hljs-params">(ListNode* head)</span> </span>&#123;<br>        <span class="hljs-built_in">dfs</span>(head);<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> AcWing </tag>
+            
+            <tag> 链表 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>判断子序列</title>
       <link href="/posts/8dc10c9dd9e8/"/>
       <url>/posts/8dc10c9dd9e8/</url>
