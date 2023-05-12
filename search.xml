@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>[AcWing]29. 删除链表中重复的节点</title>
+      <link href="/posts/448d550da686/"/>
+      <url>/posts/448d550da686/</url>
+      
+        <content type="html"><![CDATA[<h1 id="ACW29-删除链表中重复的节点"><a href="#ACW29-删除链表中重复的节点" class="headerlink" title="ACW29. 删除链表中重复的节点"></a>ACW29. 删除链表中重复的节点</h1><p>在一个排序的链表中，存在重复的节点，请删除该链表中重复的节点，重复的节点不保留。</p><h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>链表中节点 val 值取值范围 <code>[0,100]</code>。<br>链表长度 <code>[0,100]</code>。</p><h4 id="样例1"><a href="#样例1" class="headerlink" title="样例1"></a>样例1</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">输入：1-&gt;2-&gt;3-&gt;3-&gt;4-&gt;4-&gt;5<br><br>输出：1-&gt;2-&gt;5<br></code></pre></td></tr></table></figure><h4 id="样例2"><a href="#样例2" class="headerlink" title="样例2"></a>样例2</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">输入：1-&gt;1-&gt;1-&gt;2-&gt;3<br><br>输出：2-&gt;3<br></code></pre></td></tr></table></figure><h3 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h3><p><img src="https://bu.dusays.com/2023/05/12/645e40746c07e.png" alt="image-20230512213440430"></p><p><img src="https://bu.dusays.com/2023/05/12/645e412839dba.png" alt="image-20230512213751300"></p><h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Definition for singly-linked list.</span><br><span class="hljs-comment"> * struct ListNode &#123;</span><br><span class="hljs-comment"> *     int val;</span><br><span class="hljs-comment"> *     ListNode *next;</span><br><span class="hljs-comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span><br><span class="hljs-comment"> * &#125;;</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">ListNode* <span class="hljs-title">deleteDuplication</span><span class="hljs-params">(ListNode* head)</span> </span>&#123;<br>        ListNode * dummy = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(<span class="hljs-number">-1</span>);<br>        dummy -&gt; next = head;<br>        <br>        ListNode * p = dummy;<br>        <br>        <span class="hljs-comment">// 保证节点都不为空</span><br>        <span class="hljs-keyword">while</span>(p -&gt; next)&#123;<br>            <span class="hljs-comment">// 被检查的节点</span><br>            ListNode * q = p -&gt; next;<br>            <span class="hljs-comment">// 由于这是一个已被排序的链表，因此可以通过while循环筛掉一连串的节点</span><br>            <span class="hljs-comment">// 循环跳出的时候 q -&gt; next 就是新的需要被检查的元素，与 q 的值不同</span><br>            <span class="hljs-keyword">while</span>(q -&gt; next &amp;&amp; q -&gt; val == q -&gt; next -&gt; val) q = q -&gt; next;<br>            <span class="hljs-comment">// 如果没有重复的元素，while循环体不会执行，会出现下面这种情况</span><br>            <span class="hljs-comment">// 那么 q 元素是没有重复元素的，就让 p 前进</span><br>            <span class="hljs-comment">// 否则，被筛选了，p 直接跳跃至 q -&gt; next 这个新的需要被筛选元素</span><br>            <span class="hljs-keyword">if</span>(p -&gt; next == q) p = p -&gt; next;<br>            <span class="hljs-keyword">else</span> p -&gt; next = q -&gt; next;<br>        &#125;<br>        <br>        <span class="hljs-keyword">return</span> dummy -&gt; next;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> AcWing </tag>
+            
+            <tag> 链表 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[AcWing]28. 在O(1)时间删除链表结点</title>
       <link href="/posts/766b1c104395/"/>
       <url>/posts/766b1c104395/</url>
