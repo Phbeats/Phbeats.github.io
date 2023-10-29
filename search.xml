@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>图-基于邻接表实现</title>
+      <link href="/posts/de48a254d011/"/>
+      <url>/posts/de48a254d011/</url>
+      
+        <content type="html"><![CDATA[<h3 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h3><p>使用<code>邻接表</code>作为我的<code>图论算法</code>的基本模板。</p><p><code>图论算法</code>可以使用<code>邻接表</code>和<code>邻接矩阵</code>来作为地基。<br>我选择王道书上的邻接表作为我的模板原因有：</p><ol><li>若要使用<code>邻接矩阵</code>，我有 y 总 的模板。并且也契合，因为可以使用一个<code>二维数组</code>来简化类似邻接矩阵</li><li>我如果是出题人，要指定数据类型，我会选择邻接表，因为考生肯定会优先选择二维数组。</li></ol><h3 id="邻接表的类型描述"><a href="#邻接表的类型描述" class="headerlink" title="邻接表的类型描述"></a>邻接表的类型描述</h3><wavy>我似乎理解错《数据结构》这门考试科目的含义了。它应该重视的是理论，而不是代码的实现，我花费了大量的时间在代码上，这是错误的！因此我打算停更...</wavy>]]></content>
+      
+      
+      <categories>
+          
+          <category> 考研笔试自用算法大题模板 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 考研笔试自用算法大题模板 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>二叉树</title>
       <link href="/posts/00977ebe8687/"/>
       <url>/posts/00977ebe8687/</url>
@@ -375,31 +400,6 @@
       <url>/posts/7da784530acd/</url>
       
         <content type="html"><![CDATA[<h3 id="浅尝手冲咖啡汇总"><a href="#浅尝手冲咖啡汇总" class="headerlink" title="浅尝手冲咖啡汇总"></a>浅尝手冲咖啡汇总</h3><ol><li><a href="/posts/8635f45e7775">SeeSaw 甜橙子</a></li><li><a href="/posts/cb40af96710f">八平方 晴天娃娃</a></li><li><a href="/posts/c19e2a8a5f1a">辛鹿 SOE 耶加雪菲</a></li><li><a href="/posts/fcab5f014e92">菠萝成子 危地马拉 瑰夏</a></li><li><a href="/posts/32f6f1e29b78">治光师 伊迪朵 耶加雪菲</a></li><li><a href="/posts/bb95ebed2e97">治光师 肯尼亚圆豆</a></li><li><a href="/posts/9c71bc76a9ad">四人咖啡 果丁丁</a></li><li><a href="/posts/0e42f4daeb32">治光师 野草莓意式拼配咖啡</a></li><li><a href="/posts/b8bb6e256940">四人咖啡 粉红佳人</a></li><li><a href="/posts/9d745f9baaa9">辛鹿 号码系列</a></li><li><a href="/posts/89001a5236dd">治光师 沃卡74110 耶加雪菲</a></li></ol><div class="tip home"><p>最近很忙，暂时停更…</p></div>]]></content>
-      
-      
-      <categories>
-          
-          <category> 置顶汇总 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 置顶汇总 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>考研笔试自用算法大题模板汇总</title>
-      <link href="/posts/f2bd1d8d0430/"/>
-      <url>/posts/f2bd1d8d0430/</url>
-      
-        <content type="html"><![CDATA[<h3 id="第一章代码模板"><a href="#第一章代码模板" class="headerlink" title="第一章代码模板"></a>第一章代码模板</h3><ol><li><a href="/posts/b854574263bd">静态分配的顺序表</a></li><li><a href="/posts/634af820198d">带头结点的单链表</a></li><li><a href="/posts/ff21019310ee">带头结点的双链表</a></li><li><a href="/posts/ac441d04cb46">循环链表</a></li></ol><h3 id="第二章代码模板"><a href="#第二章代码模板" class="headerlink" title="第二章代码模板"></a>第二章代码模板</h3><wavy>待更新...</wavy>]]></content>
       
       
       <categories>
